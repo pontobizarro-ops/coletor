@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Instrument+Serif&display=swap" rel="stylesheet">
+<title>Coletor Ponto Bizarro</title>
+<style>
+  /* Uma coluna estreita de leitura sobre fundo escuro, na mesma paleta da fila
+     de aprovação do canal — é a mesma ferramenta, vista de fora. */
+  :root {
+    --fundo: #0e1214;
+    --superficie: #161c1f;
+    --borda: #2a353a;
+    --texto: #e6ecee;
+    --fraco: #8fa3aa;
+    --acento: #3fa9a0;
+    --display: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --corpo: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --dado: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --fundo: #f4f6f6; --superficie: #ffffff; --borda: #d4dedf;
+      --texto: #12191b; --fraco: #5a6b70; --acento: #1f7d76;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --fundo: #f4f6f6; --superficie: #ffffff; --borda: #d4dedf;
+    --texto: #12191b; --fraco: #5a6b70; --acento: #1f7d76;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--fundo); color: var(--texto);
+    font-family: var(--corpo); font-size: 16px; line-height: 1.6; margin: 0;
+  }
+  .folha { max-width: 42rem; margin: 0 auto; padding-block: 48px 72px; padding-left: 20px; padding-right: 20px; }
+
+  .marca { font-family: var(--dado); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--acento); margin: 0 0 10px; }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(2.1rem, 7vw, 3.1rem); line-height: 1.05; margin: 0 0 14px; text-wrap: balance; }
+  .linha-fina { color: var(--fraco); font-size: 1.05rem; margin: 0 0 36px; }
+
+  h2 { font-family: var(--display); font-weight: 400; font-size: 1.5rem; margin: 34px 0 10px; }
+  p { margin: 0 0 14px; }
+  ul { margin: 0 0 14px; padding-left: 20px; }
+  li { margin-bottom: 6px; }
+  code { font-family: var(--dado); font-size: .88em; background: var(--superficie); border: 1px solid var(--borda); border-radius: 5px; padding: 1px 5px; }
+
+  .caixa { background: var(--superficie); border: 1px solid var(--borda); border-radius: 10px; padding: 16px 18px; margin: 22px 0; }
+  .caixa p:last-child { margin-bottom: 0; }
+
+  .rodape { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--borda); color: var(--fraco); font-size: .9rem; }
+  a { color: var(--acento); }
+  a:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="folha">
+  <p class="marca">Ponto Bizarro</p>
+  <h1>Coletor de estatísticas</h1>
+  <p class="linha-fina">
+    Ferramenta interna do canal Ponto Bizarro. Lê as estatísticas dos vídeos do próprio
+    canal para orientar o que é produzido em seguida.
+  </p>
+
+  <h2>O que ela faz</h2>
+  <p>
+    O Ponto Bizarro publica um vídeo curto por dia sobre mistérios, história e ciência.
+    Cada vídeo é montado a partir de uma ficha com regras medidas: duração, ritmo de
+    corte, posição da virada, níveis de áudio.
+  </p>
+  <p>
+    Esta ferramenta fecha o outro lado desse ciclo. Ela consulta as APIs oficiais das
+    plataformas onde o canal publica e traz, para cada vídeo do próprio canal, os
+    números que a plataforma já mostra ao titular da conta:
+  </p>
+  <ul>
+    <li>visualizações</li>
+    <li>curtidas</li>
+    <li>comentários</li>
+    <li>compartilhamentos</li>
+  </ul>
+  <p>
+    Esses números são gravados num arquivo local e comparados entre vídeos, em marcos
+    fixos de idade — 48 horas e 7 dias depois da publicação. É o que permite dizer qual
+    escolha de roteiro ou de edição funcionou, em vez de chutar.
+  </p>
+
+  <div class="caixa">
+    <p>
+      <strong>Acessa apenas a conta do titular.</strong> Não há cadastro, não há outros
+      usuários, e a ferramenta não lê nem armazena dados de terceiros.
+    </p>
+  </div>
+
+  <h2>Como se conecta</h2>
+  <p>
+    A autorização é feita pelo próprio titular, pelo fluxo oficial de login de cada
+    plataforma, com permissões somente de leitura. O acesso pode ser revogado a
+    qualquer momento nas configurações de segurança da conta.
+  </p>
+  <p>
+    No TikTok, a ferramenta usa o <code>Login Kit</code> com os escopos
+    <code>user.info.basic</code>, <code>user.info.stats</code> e <code>video.list</code>.
+    Nenhum deles permite publicar, editar ou apagar conteúdo.
+  </p>
+
+  <h2>Documentos</h2>
+  <p>
+    Os termos de uso e a política de privacidade desta ferramenta estão em páginas
+    próprias, ligadas no cadastro do aplicativo.
+  </p>
+
+  <p class="rodape">
+    Contato: mensagem direta para <strong>@pontobizarro</strong> no TikTok ou no YouTube.
+  </p>
+</div>
+</body>
+</html>

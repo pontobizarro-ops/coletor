@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Instrument+Serif&display=swap" rel="stylesheet">
+<title>Termos do Coletor</title>
+<style>
+  /* Uma coluna estreita de leitura sobre fundo escuro, na mesma paleta da fila
+     de aprovação do canal — é a mesma ferramenta, vista de fora. */
+  :root {
+    --fundo: #0e1214;
+    --superficie: #161c1f;
+    --borda: #2a353a;
+    --texto: #e6ecee;
+    --fraco: #8fa3aa;
+    --acento: #3fa9a0;
+    --display: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --corpo: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --dado: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --fundo: #f4f6f6; --superficie: #ffffff; --borda: #d4dedf;
+      --texto: #12191b; --fraco: #5a6b70; --acento: #1f7d76;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --fundo: #f4f6f6; --superficie: #ffffff; --borda: #d4dedf;
+    --texto: #12191b; --fraco: #5a6b70; --acento: #1f7d76;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--fundo); color: var(--texto);
+    font-family: var(--corpo); font-size: 16px; line-height: 1.6; margin: 0;
+  }
+  .folha { max-width: 42rem; margin: 0 auto; padding-block: 48px 72px; padding-left: 20px; padding-right: 20px; }
+
+  .marca { font-family: var(--dado); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--acento); margin: 0 0 10px; }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(2.1rem, 7vw, 3.1rem); line-height: 1.05; margin: 0 0 14px; text-wrap: balance; }
+  .linha-fina { color: var(--fraco); font-size: 1.05rem; margin: 0 0 36px; }
+
+  h2 { font-family: var(--display); font-weight: 400; font-size: 1.5rem; margin: 34px 0 10px; }
+  p { margin: 0 0 14px; }
+  ul { margin: 0 0 14px; padding-left: 20px; }
+  li { margin-bottom: 6px; }
+  code { font-family: var(--dado); font-size: .88em; background: var(--superficie); border: 1px solid var(--borda); border-radius: 5px; padding: 1px 5px; }
+
+  .caixa { background: var(--superficie); border: 1px solid var(--borda); border-radius: 10px; padding: 16px 18px; margin: 22px 0; }
+  .caixa p:last-child { margin-bottom: 0; }
+
+  .rodape { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--borda); color: var(--fraco); font-size: .9rem; }
+  a { color: var(--acento); }
+  a:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="folha">
+  <p class="marca">Ponto Bizarro · Coletor de estatísticas</p>
+  <h1>Termos de uso</h1>
+  <p class="linha-fina">Esta ferramenta é de uso interno do canal Ponto Bizarro e não presta serviço a terceiros. Estes termos descrevem o que ela é e o que ela não é.</p>
+  <h2>1. O que é</h2>
+  <p>
+    O Coletor Ponto Bizarro é uma ferramenta interna, usada exclusivamente pelo titular
+    do canal Ponto Bizarro. Ela lê, através das APIs oficiais das plataformas, as
+    estatísticas dos vídeos publicados pelo próprio titular.
+  </p>
+
+  <h2>2. Quem pode usar</h2>
+  <p>
+    Somente o titular da conta. Não há cadastro, não há criação de usuários, não há área
+    de login para terceiros e não há qualquer serviço oferecido ao público. A ferramenta
+    não é distribuída nem comercializada.
+  </p>
+
+  <h2>3. O que ela faz</h2>
+  <p>
+    Consulta visualizações, curtidas, comentários e compartilhamentos dos vídeos do
+    próprio titular, grava esses números em arquivo local e os compara entre vídeos para
+    orientar decisões de produção do canal.
+  </p>
+
+  <h2>4. O que ela não faz</h2>
+  <ul>
+    <li>Não publica, edita nem apaga conteúdo nas plataformas.</li>
+    <li>Não acessa contas de terceiros.</li>
+    <li>Não coleta dados de espectadores.</li>
+    <li>Não revende, compartilha nem expõe dados a terceiros.</li>
+  </ul>
+
+  <h2>5. Regras das plataformas</h2>
+  <p>
+    O uso das APIs segue os termos de serviço e as políticas de desenvolvedor de cada
+    plataforma. Quando houver conflito entre este documento e as regras da plataforma,
+    valem as regras da plataforma.
+  </p>
+
+  <h2>6. Revogação</h2>
+  <p>
+    O titular pode revogar o acesso da ferramenta a qualquer momento, nas configurações
+    de segurança e privacidade da conta na plataforma correspondente. A revogação
+    interrompe imediatamente qualquer nova consulta.
+  </p>
+
+  <h2>7. Garantias</h2>
+  <p>
+    A ferramenta é fornecida no estado em que se encontra, sem garantias de
+    disponibilidade, exatidão ou adequação a qualquer finalidade. Os números exibidos
+    são os que a plataforma devolve no momento da consulta, e plataformas revisam suas
+    próprias contagens.
+  </p>
+
+  <h2>8. Alterações</h2>
+  <p>
+    Estes termos podem ser atualizados. A data da última alteração está no rodapé.
+  </p>
+  <p class="rodape">
+    Contato: mensagem direta para <strong>@pontobizarro</strong> no TikTok ou no YouTube.<br>
+    Última atualização: 30 de setembro de 2026.
+  </p>
+</div>
+</body>
+</html>

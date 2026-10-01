@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Instrument+Serif&display=swap" rel="stylesheet">
+<title>Privacidade do Coletor</title>
+<style>
+  /* Uma coluna estreita de leitura sobre fundo escuro, na mesma paleta da fila
+     de aprovação do canal — é a mesma ferramenta, vista de fora. */
+  :root {
+    --fundo: #0e1214;
+    --superficie: #161c1f;
+    --borda: #2a353a;
+    --texto: #e6ecee;
+    --fraco: #8fa3aa;
+    --acento: #3fa9a0;
+    --display: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --corpo: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --dado: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --fundo: #f4f6f6; --superficie: #ffffff; --borda: #d4dedf;
+      --texto: #12191b; --fraco: #5a6b70; --acento: #1f7d76;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --fundo: #f4f6f6; --superficie: #ffffff; --borda: #d4dedf;
+    --texto: #12191b; --fraco: #5a6b70; --acento: #1f7d76;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--fundo); color: var(--texto);
+    font-family: var(--corpo); font-size: 16px; line-height: 1.6; margin: 0;
+  }
+  .folha { max-width: 42rem; margin: 0 auto; padding-block: 48px 72px; padding-left: 20px; padding-right: 20px; }
+
+  .marca { font-family: var(--dado); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--acento); margin: 0 0 10px; }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(2.1rem, 7vw, 3.1rem); line-height: 1.05; margin: 0 0 14px; text-wrap: balance; }
+  .linha-fina { color: var(--fraco); font-size: 1.05rem; margin: 0 0 36px; }
+
+  h2 { font-family: var(--display); font-weight: 400; font-size: 1.5rem; margin: 34px 0 10px; }
+  p { margin: 0 0 14px; }
+  ul { margin: 0 0 14px; padding-left: 20px; }
+  li { margin-bottom: 6px; }
+  code { font-family: var(--dado); font-size: .88em; background: var(--superficie); border: 1px solid var(--borda); border-radius: 5px; padding: 1px 5px; }
+
+  .caixa { background: var(--superficie); border: 1px solid var(--borda); border-radius: 10px; padding: 16px 18px; margin: 22px 0; }
+  .caixa p:last-child { margin-bottom: 0; }
+
+  .rodape { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--borda); color: var(--fraco); font-size: .9rem; }
+  a { color: var(--acento); }
+  a:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="folha">
+  <p class="marca">Ponto Bizarro · Coletor de estatísticas</p>
+  <h1>Política de privacidade</h1>
+  <p class="linha-fina">Resumo: a ferramenta acessa apenas a conta do próprio titular, não coleta dados de nenhuma outra pessoa e não compartilha nada com terceiros.</p>
+  <h2>1. Quais dados são acessados</h2>
+  <p>
+    Apenas dados da conta do titular do canal Ponto Bizarro, obtidos pelas APIs oficiais
+    das plataformas, mediante autorização dada pelo próprio titular:
+  </p>
+  <ul>
+    <li>identificação básica do perfil (nome de exibição e foto);</li>
+    <li>contagens agregadas do perfil (seguidores, número de vídeos);</li>
+    <li>lista dos vídeos do titular e, para cada um, visualizações, curtidas,
+        comentários e compartilhamentos.</li>
+  </ul>
+
+  <h2>2. Quais dados NÃO são acessados</h2>
+  <ul>
+    <li>Nenhum dado de espectadores, seguidores ou de qualquer outra pessoa.</li>
+    <li>Nenhum conteúdo privado, mensagem direta ou rascunho.</li>
+    <li>Nenhum dado de contas de terceiros — a ferramenta não tem outros usuários.</li>
+  </ul>
+
+  <h2>3. Para que servem</h2>
+  <p>
+    Exclusivamente para orientar a produção do canal: comparar o desempenho entre
+    vídeos, em marcos fixos de idade, e decidir o que repetir ou evitar nos próximos.
+  </p>
+
+  <h2>4. Onde ficam</h2>
+  <p>
+    Em arquivos locais, na máquina do titular. Não há servidor, não há banco de dados
+    hospedado e não há envio a nenhum serviço de terceiros. As credenciais de acesso
+    ficam em arquivo local excluído do controle de versão.
+  </p>
+
+  <h2>5. Compartilhamento</h2>
+  <p>
+    Nenhum. Os dados não são vendidos, cedidos, publicados nem enviados a terceiros, a
+    nenhum título.
+  </p>
+
+  <h2>6. Cookies e rastreamento</h2>
+  <p>
+    A ferramenta não é um site, não serve páginas ao público, não usa cookies e não faz
+    qualquer rastreamento.
+  </p>
+
+  <h2>7. Retenção e exclusão</h2>
+  <p>
+    Os arquivos ficam sob controle do titular, que pode apagá-los quando quiser. Como
+    não há dados de terceiros, não há solicitações de exclusão de terceiros a atender.
+  </p>
+
+  <h2>8. Revogação do acesso</h2>
+  <p>
+    O titular pode revogar a autorização a qualquer momento nas configurações de
+    segurança e privacidade da conta na plataforma. A ferramenta deixa de conseguir
+    qualquer consulta a partir desse momento.
+  </p>
+
+  <h2>9. Alterações</h2>
+  <p>
+    Esta política pode ser atualizada. A data da última alteração está no rodapé.
+  </p>
+  <p class="rodape">
+    Contato: mensagem direta para <strong>@pontobizarro</strong> no TikTok ou no YouTube.<br>
+    Última atualização: 30 de setembro de 2026.
+  </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Instrument+Serif&display=swap" rel="stylesheet">
+<title>Autorização recebida</title>
+<style>
+  :root {
+    --fundo: #0e1214; --superficie: #161c1f; --borda: #2a353a;
+    --texto: #e6ecee; --fraco: #8fa3aa; --acento: #3fa9a0; --alerta: #d98a4a;
+    --display: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --corpo: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --dado: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --fundo: #f4f6f6; --superficie: #ffffff; --borda: #d4dedf;
+      --texto: #12191b; --fraco: #5a6b70; --acento: #1f7d76; --alerta: #a65e22;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --fundo: #f4f6f6; --superficie: #ffffff; --borda: #d4dedf;
+    --texto: #12191b; --fraco: #5a6b70; --acento: #1f7d76; --alerta: #a65e22;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--fundo); color: var(--texto); font-family: var(--corpo);
+         font-size: 16px; line-height: 1.6; margin: 0; }
+  .folha { max-width: 42rem; margin: 0 auto; padding: 48px 20px 72px; }
+  .marca { font-family: var(--dado); font-size: .72rem; letter-spacing: .16em;
+           text-transform: uppercase; color: var(--acento); margin: 0 0 10px; }
+  h1 { font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 6vw, 2.8rem);
+       line-height: 1.05; margin: 0 0 14px; text-wrap: balance; }
+  p { margin: 0 0 14px; }
+  .campo { background: var(--superficie); border: 1px solid var(--borda); border-radius: 10px;
+           padding: 14px 16px; margin: 0 0 14px; }
+  .rotulo { font-family: var(--dado); font-size: .7rem; letter-spacing: .14em;
+            text-transform: uppercase; color: var(--fraco); margin: 0 0 8px; }
+  .valor { font-family: var(--dado); font-size: .95rem; word-break: break-all;
+           -webkit-user-select: all; user-select: all; margin: 0; }
+  button { font-family: var(--corpo); font-size: .9rem; background: var(--acento);
+           color: var(--fundo); border: 0; border-radius: 7px; padding: 8px 14px;
+           cursor: pointer; margin-top: 10px; font-weight: 600; }
+  button:focus-visible { outline: 2px solid var(--texto); outline-offset: 2px; }
+  .aviso { border-left: 3px solid var(--alerta); padding-left: 14px; color: var(--fraco);
+           font-size: .93rem; margin: 22px 0; }
+  .rodape { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--borda);
+            color: var(--fraco); font-size: .9rem; }
+  code { font-family: var(--dado); font-size: .88em; background: var(--superficie);
+         border: 1px solid var(--borda); border-radius: 5px; padding: 1px 5px; }
+  a { color: var(--acento); }
+</style>
+</head>
+<body>
+<div class="folha">
+  <p class="marca">Ponto Bizarro</p>
+  <h1 id="titulo">Autorização recebida</h1>
+  <p id="resumo">Copie os valores abaixo para o terminal.</p>
+  <div id="saida"></div>
+  <p class="aviso">
+    Esta página não envia nada para lugar nenhum: ela só lê o que está na barra de
+    endereço e mostra na tela. A troca pelos tokens acontece no seu computador, que é
+    onde está o <em>client secret</em>.
+  </p>
+  <p class="rodape">
+    O código expira em poucos minutos e só pode ser usado uma vez. Se demorar,
+    rode <code>npm run autorizar:tiktok</code> de novo e refaça a autorização.
+  </p>
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  const code = q.get("code");
+  const state = q.get("state");
+  const erro = q.get("error") || q.get("errCode");
+  const saida = document.getElementById("saida");
+
+  const bloco = (rotulo, valor) => {
+    const d = document.createElement("div");
+    d.className = "campo";
+    const r = document.createElement("p");
+    r.className = "rotulo";
+    r.textContent = rotulo;
+    const v = document.createElement("p");
+    v.className = "valor";
+    v.textContent = valor;
+    const b = document.createElement("button");
+    b.textContent = "Copiar";
+    b.addEventListener("click", () => {
+      navigator.clipboard.writeText(valor).then(
+        () => { b.textContent = "Copiado"; setTimeout(() => (b.textContent = "Copiar"), 1600); },
+        () => { b.textContent = "Selecione e copie à mão"; }
+      );
+    });
+    d.append(r, v, b);
+    return d;
+  };
+
+  if (erro) {
+    document.getElementById("titulo").textContent = "A autorização falhou";
+    document.getElementById("resumo").textContent =
+      "O TikTok recusou o pedido. O parâmetro que ele devolveu está abaixo.";
+    saida.append(bloco("erro", erro));
+    const desc = q.get("error_description") || q.get("errMsg");
+    if (desc) saida.append(bloco("descrição", desc));
+  } else if (code) {
+    saida.append(bloco("code", code));
+    if (state) saida.append(bloco("state", state));
+  } else {
+    document.getElementById("titulo").textContent = "Nada para mostrar";
+    document.getElementById("resumo").textContent =
+      "Esta página só tem conteúdo depois de uma autorização do TikTok. " +
+      "Ela é o endereço de retorno do fluxo, não uma página para visitar direto.";
+  }
+</script>
+</body>
+</html>
