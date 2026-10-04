@@ -1,0 +1,229 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Pipe 0018 e 0019</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: abas por vídeo, blocos por plataforma com campos copiáveis */
+:root{
+  --bg:#EDF2F2; --surface:#FFFFFF; --sunk:#E3EAEA; --ink:#0F1D20; --muted:#52666A; --line:#CCD8D8;
+  --accent:#FFD60A; --accent-ink:#0F1D20; --petrol:#0F5561; --warn:#9A5B00; --warn-bg:#FFF3D6; --ok:#1B7A4B;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0A1517; --surface:#112124; --sunk:#0D1B1D; --ink:#E4EEEE; --muted:#8FA6A9; --line:#22393C;
+    --petrol:#5FB8C6; --warn:#FFC266; --warn-bg:#2A2110; --ok:#5FD39A;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0A1517; --surface:#112124; --sunk:#0D1B1D; --ink:#E4EEEE; --muted:#8FA6A9; --line:#22393C;
+  --petrol:#5FB8C6; --warn:#FFC266; --warn-bg:#2A2110; --ok:#5FD39A;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Source Sans 3",system-ui,sans-serif;padding-inline:16px;padding-block:24px 64px}
+.wrap{max-width:860px;margin:0 auto;display:grid;gap:24px}
+h1,h2,h3{font-family:Poppins,system-ui,sans-serif;text-wrap:balance;margin:0}
+h1{font-size:clamp(24px,5vw,32px);font-weight:700;letter-spacing:-.01em}
+h1 .pill{background:var(--accent);color:var(--accent-ink);padding:0 .3em;border-radius:6px}
+h2{font-size:20px}
+.lede{color:var(--muted);margin:6px 0 0;max-width:62ch}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{font:600 15px Poppins,sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 16px;border-radius:10px;cursor:pointer;text-align:left;min-width:0}
+.tab small{display:block;font:400 13px "Source Sans 3",sans-serif;color:var(--muted)}
+.tab[aria-selected="true"]{border-color:var(--ink);box-shadow:inset 0 -3px 0 var(--accent)}
+.tab:focus-visible,.copy:focus-visible,input:focus-visible{outline:2px solid var(--petrol);outline-offset:2px}
+.head{display:grid;gap:4px}
+.eyebrow{font:600 12px Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--petrol)}
+.file{font:13px "JetBrains Mono",ui-monospace,monospace;background:var(--sunk);border:1px solid var(--line);border-radius:8px;padding:8px 10px;overflow-x:auto;white-space:nowrap}
+.note{background:var(--warn-bg);border-left:3px solid var(--warn);padding:12px 14px;border-radius:0 8px 8px 0}
+.note b{color:var(--warn)}
+.note ul{margin:6px 0 0;padding-left:18px}
+.slot{display:grid;grid-template-columns:72px 1fr;gap:16px;padding-top:20px;border-top:1px solid var(--line)}
+.time{font:700 22px Poppins,sans-serif;font-variant-numeric:tabular-nums}
+.time small{display:block;font:500 12px Poppins,sans-serif;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.slot-body{display:grid;gap:12px;min-width:0}
+.how{margin:0;color:var(--muted);font-size:15px}
+.field{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.field-top{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px 8px 14px;border-bottom:1px solid var(--line)}
+.label{font:600 13px Poppins,sans-serif}
+.count{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;margin-left:6px;font-family:"Source Sans 3",sans-serif;font-weight:400}
+.copy{font:600 13px Poppins,sans-serif;border:0;background:var(--accent);color:var(--accent-ink);padding:6px 12px;border-radius:7px;cursor:pointer;flex:none}
+.copy.done{background:var(--ok);color:#fff}
+pre{margin:0;padding:12px 14px;white-space:pre-wrap;word-break:break-word;font:14px/1.5 "JetBrains Mono",ui-monospace,monospace}
+.checks{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+.checks label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.checks input{margin-top:4px;accent-color:var(--petrol);width:16px;height:16px;flex:none}
+.ig{display:grid;gap:10px}
+.ig ol{margin:0;padding-left:20px}
+.ig li{margin:2px 0}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}
+.card h3{font-size:15px;margin-bottom:6px}
+a{color:var(--petrol)}
+@media (max-width:520px){.slot{grid-template-columns:1fr;gap:6px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Ponto Bizarro · pipe de publicação</div>
+    <h1>Hoje <span class="pill">0018</span> · Amanhã <span class="pill">0019</span></h1>
+    <p class="lede">Tudo pronto para copiar e colar. Agende os dois agora: YouTube e TikTok têm agendamento nativo; o Instagram tem o passo a passo na terceira aba.</p>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-d1" aria-selected="true" aria-controls="d1">Hoje · dom 04/10<small>0018 — O Círculo Que Ninguém Viu no Mapa</small></button>
+    <button class="tab" role="tab" id="tab-d2" aria-selected="false" aria-controls="d2">Amanhã · seg 05/10<small>0019 — Você Não É Só Você</small></button>
+    <button class="tab" role="tab" id="tab-ig" aria-selected="false" aria-controls="ig">Agendar no Instagram<small>app ou computador</small></button>
+  </div>
+
+  <section id="d1" role="tabpanel" aria-labelledby="tab-d1"></section>
+  <section id="d2" role="tabpanel" aria-labelledby="tab-d2" hidden></section>
+
+  <section id="ig" role="tabpanel" aria-labelledby="tab-ig" hidden class="ig">
+    <div class="head"><div class="eyebrow">Instagram Reels</div><h2>Como agendar o Reels</h2></div>
+    <p class="how">Precisa ser <b>conta profissional</b> (Criador de conteúdo serve e é grátis): Configurações → Tipo de conta e ferramentas → Mudar para conta profissional. Pelo app dá para agendar até 75 dias antes.</p>
+    <div class="cols">
+      <div class="card">
+        <h3>No computador (Meta Business Suite)</h3>
+        <ol>
+          <li>Abra <a href="https://business.facebook.com" target="_blank" rel="noopener">business.facebook.com</a> com a conta ligada ao @pontobizarro.</li>
+          <li><b>Criar reel</b> → marque só o Instagram → envie o .mp4 direto da pasta.</li>
+          <li>Cole a legenda.</li>
+          <li>Em <b>Opções de programação</b>: ative <b>Definir data e hora</b> → data e horário do vídeo → <b>Programar</b>.</li>
+        </ol>
+        <p class="how" style="margin-top:6px">Exige o Instagram conectado a uma página/portfólio do Facebook. É o caminho mais cômodo, porque o arquivo já está no PC.</p>
+      </div>
+      <div class="card">
+        <h3>No celular (app)</h3>
+        <ol>
+          <li>Perfil → <b>+</b> → <b>Reel</b> → escolha o vídeo → Avançar.</li>
+          <li>Cole a legenda.</li>
+          <li>Na tela final, toque em <b>Mais opções</b> / <b>Configurações avançadas</b>.</li>
+          <li>Ative <b>Programar este conteúdo</b> → data e horário.</li>
+          <li>Volte e toque em <b>Programar</b>.</li>
+        </ol>
+      </div>
+    </div>
+    <p class="how">Os nomes dos menus mudam um pouco entre versões. Se "Programar" não aparecer, a conta ainda é pessoal.</p>
+  </section>
+</div>
+
+<script>
+const HASH_18 = "#Mistério #Curiosidades #FatosBizarros #PONTOBIZARRO #Viral #cratera #meteorito #Quebec #geologia #GoogleEarth #ciência #descoberta #espaço #astronomia";
+const CORPO_18 = `Em 2024, Joël Lapointe procurava um lugar pra acampar no Quebec. Olhando a imagem de satélite, reparou numa formação redonda demais para ser acidente — e mandou as coordenadas para cientistas.
+Em outubro de 2025, uma expedição encontrou cones de estilhaçamento nas rochas: a marca que só um impacto deixa. A cratera tem 25 km e cerca de 390 milhões de anos, e ganhou o nome de Uhackatik, escolhido junto com o Conselho Innu de Ekuanitshit. O reconhecimento formal ainda está em análise.
+A Terra tem só cerca de 190 crateras confirmadas. As que faltam estão onde ninguém olhou com atenção.
+
+👉 Você já reparou em alguma coisa estranha olhando mapa de satélite? Conta aí 👇
+Segue @pontobizarro pra mais mistérios assim.`;
+const RODAPE_18 = `🛰️ Imagem de satélite: NASA Earth Observatory / Lauren Dauphin, com dados Landsat 8 do U.S. Geological Survey (12/10/2025)`;
+const FONTES_18_YT = `📄 Fontes:
+ScienceDaily, 21/09/2026 — https://www.sciencedaily.com/releases/2026/09/260921081101.htm
+ABC News, 23/09/2026 — https://abcnews.com/International/amateur-astronomer-discovers-390-million-year-meteorite-impact/story?id=135016127`;
+const FONTES_18 = FONTES_18_YT; // links completos nas 3 plataformas
+
+const HASH_19 = "#Mistério #Curiosidades #FatosBizarros #PONTOBIZARRO #Viral #Ciência #Biologia #DNA #CorpoHumano #Genética #Cérebro #Saúde #Descoberta";
+const CORPO_19 = `Na gravidez, células do bebê atravessam a placenta e ficam no corpo da mãe por décadas — inclusive no cérebro. E a via é de mão dupla: todo mundo carrega células da própria mãe. Chamam de microquimerismo. O que essas células fazem lá continua sem resposta: há evidência de que ajudam a reparar tecido, e evidência de que participam de doença autoimune.
+
+👉 Você acha que elas protegem ou atacam? Conta aí 👇
+Segue @pontobizarro pra mais mistérios assim.`;
+const FONTES_19 = `📄 Fontes:
+Bianchi et al. (1996), PNAS — células fetais masculinas no sangue materno até 27 anos depois
+Chan et al. (2012), PLoS ONE — microquimerismo masculino em 63% dos cérebros femininos analisados
+Boddy et al. (2015), BioEssays — hipóteses de cooperação e conflito entre as células`;
+const RODAPE_19 = ``;
+
+const DAYS = {
+  d1: {
+    eyebrow:"Domingo, 04/10 · hoje · 11:30 nas 3 plataformas",
+    title:"0018 — O Círculo Que Ninguém Viu no Mapa",
+    file:String.raw`PontoBizarro\0018 - O Círculo Que Ninguém Viu no Mapa\0018_final.mp4`,
+    fileNote:"82,4s · 1080×1920 · 19 MB · Gate 2 aceito em 27/09 · sem rótulo de IA",
+    time:"11:30",
+    notes:[
+      "O dossiê não trazia Tags do YouTube. Criei a lista abaixo a partir das hashtags; a primeira tag pesa mais.",
+      "Instagram e TikTok não têm campo de título: o título do dossiê entra como primeira linha da legenda.",
+      "A linha 🛰️ com o crédito da NASA / Landsat 8 / USGS é obrigatória nas 3 redes (licença). Não apague.",
+      "Links das fontes colados na descrição das 3 plataformas, e a linha “voz sintética” saiu do texto (decisão do canal). Agende este vídeo primeiro."
+    ],
+    yt:{title:"Ele procurava um lugar pra acampar e achou uma cratera de 390 milhões de anos", desc:CORPO_18+"\n\n"+FONTES_18_YT+"\n"+RODAPE_18+"\n\n"+HASH_18, tags:"cratera de impacto, Uhackatik, Quebec, meteorito, astrônomo amador, Google Earth, geologia, NASA, Landsat, PONTOBIZARRO"},
+    ig:"Um astrônomo amador achou uma cratera de 25 km olhando o mapa\n\n"+CORPO_18+"\n\n"+FONTES_18+"\n"+RODAPE_18+"\n\n"+HASH_18,
+    tt:"Esse círculo ficou anos no mapa e ninguém reparou 🌍\n\n"+CORPO_18+"\n\n"+FONTES_18+"\n"+RODAPE_18+"\n\n"+HASH_18,
+    pin:"Ele achou isso procurando um lugar pra acampar. Você já viu alguma coisa estranha numa imagem de satélite? 👇",
+    after:["Responder os 5-10 primeiros comentários na 1ª hora de cada plataforma","Anotar data e hora reais de publicação no 04 e no dossiê","Coletar as métricas de 48h do 0018 na terça, 06/10"]
+  },
+  d2: {
+    eyebrow:"Segunda, 05/10 · amanhã · 12:30 nas 3 plataformas",
+    title:"0019 — Você Não É Só Você",
+    file:String.raw`PontoBizarro\0019 - Você Não É Só Você\0019_entrega.mp4`,
+    fileNote:"61,5s · 1080×1920 · 19 MB · mídia de banco (clipes Pexels) · sem rótulo de IA",
+    time:"12:30",
+    notes:[
+      "Data mudada: o pacote do 0019 dizia 04/10 às 11:30, o mesmo dia e horário do 0018. Pelo plano (41), o 0019 é o primeiro de 05/10 (segunda), dia de semana, 12:30. Se preferir outro dia, é só trocar a data no agendamento.",
+      "O pacote não tinha a pergunta nem o “Segue @pontobizarro” na legenda, que o 42 pede. Acrescentei, alinhada ao comentário fixado, e montei o bloco 📄 Fontes com as 3 referências do dossiê.",
+      "Instagram e TikTok: o título entra como primeira linha da legenda.",
+      "O dossiê do 0019 mostra “virada = 6774,1%”. É erro de exibição do script; o cálculo certo é 41,68s ÷ 61,52s = 67,7%, dentro do §R4.",
+      "As fontes do 0019 são artigos científicos e o pacote não traz link para elas. Quando tiver os links (DOI/PubMed), cole abaixo de cada referência. A linha “voz sintética” saiu do texto.",
+      "O 0019 ainda não aparece no 04 (Registro) nem no 41 do projeto. Falta incluir depois de agendar."
+    ],
+    yt:{title:"Tem células no seu corpo que não têm o seu DNA", desc:"Tem células no seu corpo que não são suas. 🧬\n\n"+CORPO_19+"\n\n"+FONTES_19+"\n\n"+HASH_19, tags:"microquimerismo, células fetais, dna, biologia, curiosidades, ciência, corpo humano"},
+    ig:"Você carrega células de outra pessoa 🧬\n\n"+CORPO_19+"\n\n"+FONTES_19+"\n\n"+HASH_19,
+    tt:"Parte do seu corpo não é sua e a ciência não sabe explicar\n\n"+CORPO_19+"\n\n"+FONTES_19+"\n\n"+HASH_19,
+    pin:"As células da sua mãe ainda estão em você agora. Protegendo ou atacando? A ciência está dividida 👇",
+    after:["Responder os 5-10 primeiros comentários na 1ª hora de cada plataforma","Anotar data e hora reais de publicação no 04 e no dossiê","Coletar as métricas de 48h do 0019 na quarta, 07/10"]
+  }
+};
+
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+let fid=0; const store={};
+function field(label,text,limit){
+  const id="f"+(fid++); store[id]=text;
+  const n=[...text].length;
+  const cnt=limit?`<span class="count">${n}/${limit}</span>`:"";
+  return `<div class="field"><div class="field-top"><span class="label">${label}${cnt}</span><button class="copy" data-f="${id}">Copiar</button></div><pre>${esc(text)}</pre></div>`;
+}
+function slot(time,plat,how,inner){
+  return `<div class="slot"><div class="time">${time}<small>${plat}</small></div><div class="slot-body"><p class="how">${how}</p>${inner}</div></div>`;
+}
+function render(key){
+  const d=DAYS[key], t=d.time;
+  const checks=[
+    ["yt",`YouTube agendado para ${t}`],["ig",`Instagram agendado para ${t} (ou lembrete para postar na mão)`],["tt",`TikTok agendado para ${t}`],
+    ["pin","Comentário fixado nas 3 plataformas, depois que cada uma for ao ar"],...d.after.map((x,i)=>["a"+i,x])
+  ];
+  document.getElementById(key).innerHTML = `
+    <div class="head" style="margin-bottom:12px"><div class="eyebrow">${d.eyebrow}</div><h2>${d.title}</h2></div>
+    <div class="file" title="Arquivo">${esc(d.file)}</div>
+    <p class="how" style="margin:6px 0 14px">${d.fileNote}. Use o mesmo arquivo nas três plataformas.</p>
+    <div class="note"><b>Mudanças e avisos</b><ul>${d.notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul></div>
+    ${slot(t,"YouTube","Studio → Criar → Enviar vídeo. Idioma Português (Brasil), licença padrão, permitir incorporação, publicar no feed e notificar. Em Visibilidade, escolha <b>Programar</b> para a data, às "+t+".",
+      field("Título",d.yt.title,100)+field("Descrição",d.yt.desc,5000)+field("Tags (em Mostrar mais → Tags)",d.yt.tags,500))}
+    ${slot(t,"Instagram","Reels. Para agendar, veja a aba “Agendar no Instagram”.",
+      field("Legenda",d.ig,2200))}
+    ${slot(t,"TikTok","tiktok.com/upload (TikTok Studio) → arquivo. Em Configurações, escolha <b>Programar</b>: data e "+t+".",
+      field("Descrição",d.tt,4000))}
+    ${slot("depois","as 3","Quando o vídeo for ao ar, poste e fixe o mesmo comentário em cada plataforma.",
+      field("Comentário fixado",d.pin))}
+    <div class="checks" style="margin-top:20px">${checks.map(([k,x])=>{const id=`chk-${key}-${k}`;return `<label for="${id}"><input type="checkbox" id="${id}"> <span>${esc(x)}</span></label>`}).join("")}</div>`;
+}
+render("d1"); render("d2");
+
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".copy"); if(!b) return;
+  const text=store[b.dataset.f];
+  const ok=()=>{b.textContent="Copiado";b.classList.add("done");setTimeout(()=>{b.textContent="Copiar";b.classList.remove("done")},1600)};
+  const fallback=()=>{const pre=b.closest(".field").querySelector("pre");const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Selecionado: Ctrl+C"};
+  try{navigator.clipboard.writeText(text).then(ok,fallback)}catch(_){fallback()}
+});
+
+const tabs=[...document.querySelectorAll(".tab")];
+function show(id){tabs.forEach(t=>{const on=t.getAttribute("aria-controls")===id;t.setAttribute("aria-selected",on);document.getElementById(t.getAttribute("aria-controls")).hidden=!on});try{localStorage.setItem("pb-tab-1819",id)}catch(_){}}
+tabs.forEach(t=>t.addEventListener("click",()=>show(t.getAttribute("aria-controls"))));
+document.addEventListener("change",e=>{if(e.target.type!=="checkbox")return;try{localStorage.setItem(e.target.id,e.target.checked?"1":"")}catch(_){}});
+document.querySelectorAll('input[type=checkbox]').forEach(c=>{try{c.checked=localStorage.getItem(c.id)==="1"}catch(_){}});
+try{const t=localStorage.getItem("pb-tab-1819");if(t&&document.getElementById(t))show(t)}catch(_){}
+</script>
+
+</body></html>
